@@ -4,107 +4,85 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8"
+	src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<script src="../js/jquery-1.11.3.js"></script>
 
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./css/test.css" />
+<title>test</title>
+<h1>Hellow world! 1</h1>
+<h2>Hellow world! 2</h2>
+<h3>Hellow world! 3</h3>
+<h4>Hellow world! 4</h4>
+<h5>Hellow world! 5</h5>
+<h6>Hellow world! 6</h6>
+<a href="http://www.baidu.com">百度</a>
 
 
+<table cellspacing="0px" cellspadding="0px" width="300px">
+	<tr>
+		<td rowspan="3" width="100px">ID</td>
+		<td width="100px">名前</td>
+		<td width="100px">クラスID</td>
+	</tr>
+	<tr>
+		<td>田中</td>
+		<td>67</td>
+	</tr>
+	<tr>
 
-
+		<td>山田</td>
+		<td>68</td>
+	</tr>
+	<tr>
+		<td colspan="2">私は二つrow</td>
+		<td>aaa</td>
+	</tr>
+</table>
 
 </head>
 <body>
-<center><img src="./images/header.jpg"/></center>
-
-<h1 align="center"><a href="all" rel="external nofollow" rel="external nofollow" >进入学員管理主页</a></h1>
-<h1 align="center"><a href="allTeacher" rel="external nofollow" rel="external nofollow" >进入先生管理主页</a></h1>
-<h1>Hello world</h1>
-<h2>Hello world</h2>
-<h3>Hello world</h3>
-<h4>Hello world</h4>
-<h5>Hello world</h5>
-<h6>Hello world</h6>
-
-<a href="http://www.apple.com/">apple</a>
-<br/>
-
-<table   border=”2″>
-<tr>
-<th>name</th>
-<th>Japaneses</th>
-<th>math</th>
-<th>English</th>
-</tr>
-
-<tr>
-<td>Mike</td>
-<td>78</td>
-<td>86</td>
-<td>54</td>
-</tr>
-
-<tr>
-<td>nick</td>
-<td>54</td>
-<td>12</td>
-<td>90</td>
-</tr>
-
-</table>
-
-<p>
-hello world
-</p>
-
-<p>
-hello world!<span>hello world!</span>
-</p>
-
-
-<p>
-Hello.<br>
-I'm studying HTML.
-</p>
-
 <form>
-<input type="text">
+<input id="inputid" type="text"><p>username</p>
 </form>
+<a id="ajaxbtn" href="javascript:void(0);">hello</a>
+<script type="text/javascript">
+		$(function(){
+			$('#ajaxbtn').click(function(){
+				var ajaxUrl = 'myajax';
+				var username = $("#inputid").val();
+				var param = {id:username};
+				$.getJSON(ajaxUrl,param,function(result){
+					if(!result.result){
+						alert('接口失敗');
+						return false;
+					}else{
+						alert("接口成功");
+					};
+					var data = result.data;
+					var html = "<div>"
+					for(var i=0;i<data.length;i++){
+						html+="<span>id："+data[i].id+"</span><br>"
+						html+="<span>名字："+data[i].name+"</span><br>"
+						html+="<span>年齡："+data[i].age+"</span><br>"
+						html+="<span>分数："+data[i].score+"</span><br>"
 
-<form>
-<input type="checkbox">baseball
-</form>
-
-<form>
-<input type="radio"  name="sports"  value="0">baseball
-<input type="radio"  name="sports"  values="1">soccer
-</form>
-
-
-<form>
-<select>
-<option value="0">baseball</option>
-<option value="1">soccer</option>
-<option value="2">テニス</option>
-</form>
-
-
-<form>
-<textarea></textarea>
-</form>
-
-<form>
-<lable>
-<input type="checkbox">このサイトは役に立った
-
-</lable>
-</form>
-
-<form>
-<input type="submit">
-</form>
-
-<p>
-
-
+					}
+					html+='</div>'
+					$("body").append(html);
+				//	$("#inputid").hide();
+					//$("#inputpsd").hide();
+				//	$("#but").hide();
+					//$("body").css('background-color','green');
+				});
+			});
+		});
+	</script>
+</script>
 </body>
 </html>
 

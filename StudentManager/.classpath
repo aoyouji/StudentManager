@@ -39,5 +39,6 @@
 	<classpathentry kind="lib" path="C:/workspace/StudentManager/WebContent/WEB-INF/lib/standard-1.1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/workspace/StudentManager/WebContent/WEB-INF/lib/aopalliance.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="C:/Users/luyao/Desktop/hutianjiao/StudentManager/WebContent/WEB-INF/lib/fastjson-1.2.7.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>学员管理</title>
-<link rel="stylesheet" type="text/css" href="./css/all.css" />
+<link rel="stylesheet" type="text/css" href="./css/test.css" />
 <style type="text/css"></style>
 <!-- jQuery -->
 <script type="text/javascript" charset="utf8"
@@ -148,13 +148,13 @@ $(document).ready(function(){
 	<h1 align="center">学员信息管理</h1>
 	<div id="all_comm" class="all">
 		<h2 align="center">学员信息一览</h2>
-		<table id="items">
+		<table id="items"  cellspacing="0px" cellspadding="0px" width="400px">
 			<tr>
 				<td>id</td>
-				<td>姓名</td>
-				<td>出生年月</td>
-				<td>年龄</td>
-				<td>分数</td>
+				<td width="100px">姓名</td>
+				<td width="100px">出生年月</td>
+				<td width="50px">年龄</td>
+				<td width="100px">分数</td>
 			</tr>
 
 			<c:forEach items="${students}" var="student">

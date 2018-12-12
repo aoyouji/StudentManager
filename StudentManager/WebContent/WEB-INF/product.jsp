@@ -77,6 +77,46 @@ $(document).ready(function(){
 	}
 	});
 });
+$(document).ready(function(){
+	$("#buttoneditproduct").click(function(){
+	var input_editbyid=$("#inputeditbyid").val();
+	if(input_editbyid==""||input_editbyid==null){
+		alert("注文番号を入力してください")
+		return false;
+	}
+	var input_editproductname=$("#inputeditproductname").val();
+	if(input_editproductname==""||input_editproductname==null){
+		alert("商品名を入力してください")
+		return false;
+	}
+	var input_editproductsupplier=$("#inputeditproductsupplier").val();
+	if(input_editproductsupplier==""||input_editproductsupplier==null){
+		alert("産地を入力してください")
+		return false;
+	}
+	var input_editproducttype=$("#inputeditproducttype").val();
+	if(input_editproducttype==""||input_editproducttype==null){
+		alert("商品種類を入力してください")
+		return false;
+	}
+	var input_editproductindate=$("#inputeditproductindate").val();
+	if(input_editproductindate==""||input_editproductindate==null){
+		alert("注文日付を入力してください")
+		return false;
+	}
+	var input_editproductprice=$("#inputeditproductprice").val();
+	if(input_editproductprice==""||input_editproductprice==null){
+		alert("価格を入力してください")
+		return false;
+	}
+	var input_editproductamount=$("#inputeditproductamount").val();
+	if(input_editproductamount==""||input_editproductamount==null){
+		alert("量を入力してください")
+		return false;
+	}
+	$("#formeditproduct").submit();
+	})
+})
 
 </script>
 </head>
@@ -86,7 +126,7 @@ $(document).ready(function(){
 	<h2 align="center">注文情報</h2>
 	<table id="items">
 		<tr>
-			<td>商品番号</td>
+			<td>注文番号</td>
 			<td>商品名</td>
 			<td>産地</td>
 			<td>商品種類</td>
@@ -110,7 +150,7 @@ $(document).ready(function(){
 	<div id="add_comm" class="all" align="center">
 			<h2>注文情報の検索</h2>
 			<form id="formsearchbyid" action="queryByIdproduct" method="post">
-				<input id="inputsearchbyid"type="text" placeholder="商品番号" name="id">
+				<input id="inputsearchbyid"type="text" placeholder="注文番号" name="id">
 				<button id="buttonsearchbyid" type="button" >
 				<p>検索</p>
 				</button>
@@ -133,7 +173,7 @@ $(document).ready(function(){
 	<div id="add_comm" class="all" align="center">
 			<h2>注文情報の削除</h2>
 			<form id="formdelbyid" action="delproduct" method="post">
-				<input id="inputdelbyid"type="text" placeholder="商品番号" name="id">
+				<input id="inputdelbyid"type="text" placeholder="注文番号" name="id">
 				<button id="buttondelbyid" type="button" >
 				<p>削除</p>
 				</button>
@@ -142,7 +182,7 @@ $(document).ready(function(){
 	<div id="add_comm" class="all" align="center">
 			<h2>注文情報の変更</h2>
 			<form id="formeditproduct" action="editproduct" method="post">
-				<input id="inputeditbyid"type="text" placeholder="商品番号" name="id"><br>
+				<input id="inputeditbyid"type="text" placeholder="注文番号" name="id"><br>
 				<input id="inputeditproductname"type="text" placeholder="商品名" name="productname">
 				<input id="inputeditproductsupplier"type="text" placeholder="産地" name="supplier">
 				<input id="inputeditproducttype"type="text" placeholder="商品種類" name="type">

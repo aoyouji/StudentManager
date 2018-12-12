@@ -1,6 +1,10 @@
 package com.student.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -9,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.student.bean.Student;
 import com.student.dao.StudentDao;
 import com.teacher.bean.Teacher;
@@ -221,6 +227,34 @@ public class StudentController {
 		return "index";
 	}
 
+	@RequestMapping(value = "/myajax", produces = "application/json;charset=UTF-8")
+	public void getAjax(HttpServletRequest request, HttpServletResponse response) {
+		JSONObject obj = new JSONObject();
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		StudentDao studao = (StudentDao) context.getBean("dao");
+		ArrayList<Student> studentList = new ArrayList<Student>();
+		studentList = (ArrayList<Student>) studao.queryAll();
+		JSONArray data = new JSONArray(); //  List
+		for (Student stu : studentList) {
+			JSONObject jsonObject = new JSONObject(); // Map
+			jsonObject.put("id", stu.getId());
+			jsonObject.put("name", stu.getName());
+			jsonObject.put("birthday", stu.getBirthday());
+			jsonObject.put("age", stu.getAge());
+			jsonObject.put("score", stu.getScore());
+			data.add(jsonObject);
+		}
+		obj.put("result", true);
+		obj.put("data", data);
+		try {
+			response.setContentType("application/json");
+			response.getWriter().write(obj.toJSONString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	@RequestMapping(value = "/allTeacher")
 	public String queryteacherAll(Model model) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -230,5 +264,7 @@ public class StudentController {
 		model.addAttribute("teachers", teacherlist);
 		return "teacher";
 	}
+
+
 
 }

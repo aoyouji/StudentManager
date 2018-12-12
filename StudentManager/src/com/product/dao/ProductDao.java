@@ -89,13 +89,10 @@ public class ProductDao {
 		 * @param id
 		 * @return 返回值类型： boolean
 		 */
-		public boolean updateStudent(Product product) {
-
-			String sql = "update student set name=? ,age=?,birthday = ? ,score = ? where id = ?";
-			Object stuObj[] = new Object[] { student.getName(), student.getAge(), student.getBirthday(), student.getScore(),
-					student.getId() };
-
-			return jdbcTemplate.update(sql, stuObj) == 1;
+		public boolean Editproduct(Product product) {
+			String sql = "update products set productname= ? ,supplier= ? ,type= ? ,indate= ? ，price= ? ,amount= ? where id= ?";
+			Object productObj[] = new Object[] { product.getProductname(),product.getSupplier(),product.getType(),product.getIndate(),product.getPrice(),product.getAmount(),product.getId()};
+			return jdbcTemplate.update(sql, productObj) == 1;
 		}
 
 }

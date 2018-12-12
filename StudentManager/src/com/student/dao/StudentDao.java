@@ -19,6 +19,7 @@ import com.student.mapper.StudentMapperst;
  */
 public class StudentDao {
 
+
 	// @Fields jdbcTemplate
 	private JdbcTemplate jdbcTemplate;
 
